@@ -5,12 +5,19 @@ const app = express();
 // specify the template engine
 app.set('view engine', 'ejs');
 
+// specify statick files
+app.use('/public', express.static('public'));
+
+// app.get('/', (req, res) => {
+//     res.sendFile(__dirname + '/html.html');
+// });
+
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/html.html');
+    res.render('index.ejs');
 });
 
 app.get('/about', (req, res) => {
-    res.sendFile(__dirname + '/about.html');
+    res.render('about.ejs');
 });
 
 app.get('/news/:id', (req, res) => {
